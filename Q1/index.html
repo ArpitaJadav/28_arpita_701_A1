@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello from NodeJS</title>
+</head>
+<body>
+    <h2>AJAX Output:</h2>
+    <p id="responseText">Loading...</p>
+
+    <script>
+        
+        window.onload = function() {
+            fetch('/gethello')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('responseText').innerText = data;
+                })
+                .catch(err => {
+                    document.getElementById('responseText').innerText = "Error fetching message.";
+                    console.error("AJAX Error:", err);
+                });
+        };
+    </script>
+</body>
+</html>
